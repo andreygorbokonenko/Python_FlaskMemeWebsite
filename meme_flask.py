@@ -5,10 +5,10 @@ import json
 app = Flask(__name__)
 
 def get_meme():
-    url = "http://placekitten.com/200/300"
+    url = "https://api.apileague.com/retrieve-random-meme?api-key=d3de461825804a1091dc925aa01d652d"
     response = json.loads(requests.request("GET", url).text)
-    meme_large = response["preview"][-2]
-    subreddit = response["subreddit"]
+    meme_large = response["url"]
+    subreddit = response["description"]
     return meme_large, subreddit
 
 @app.route("/")
